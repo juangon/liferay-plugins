@@ -921,24 +921,34 @@
 				syncUI: function(form, fieldName, date) {
 					var instance = this;
 
-					var amPmNode = form.one('select[name$=' + fieldName + 'AmPm]');
-					var hourNode = form.one('select[name$=' + fieldName + 'Hour]');
-					var minuteNode = form.one('select[name$=' + fieldName + 'Minute]');
+					var datePickerNode = form.one('input[name$=' + fieldName + ']');
+					var timePickerNode = form.one('input[name$=' + fieldName + 'Time]');
+					var amPmNode = form.one('input[name$=' + fieldName + 'AmPm]');
+					var hourNode = form.one('input[name$=' + fieldName + 'Hour]');
+					var minuteNode = form.one('input[name$=' + fieldName + 'Minute]');
 
-					var datePicker = Liferay.component(Liferay.CalendarUtil.PORTLET_NAMESPACE + fieldName + 'datePicker');
+					var datePicker = Liferay.component(Liferay.CalendarUtil.PORTLET_NAMESPACE + fieldName + 'DatePicker');
+					var timePicker = Liferay.component(Liferay.CalendarUtil.PORTLET_NAMESPACE + fieldName + 'TimePicker');
 
-					if (datePicker) {
-						datePicker.calendar.deselectDates();
-						datePicker.calendar.selectDates(date);
+					if (datePicker/* && timePicker*/) {
+						datePicker.useInputNode(datePickerNode);
+						datePicker.deselectDates();
+						datePicker.selectDates(date);
 
-						datePicker.syncUI();
+						/*timePicker.useInputNode(timePickerNode);
+						timePicker.deselectDates();
+						timePicker.selectDates(date);*/
+						
+						datePicker.calendar.syncUI();
+						/*timePicker.calendar.syncUI();*/
 					}
 
 					var hours = date.getHours();
 					var minutes = date.getMinutes();
 
 					var amPm = (hours < 12) ? 0 : 1;
-
+					var amPmStr = (amPm === 1) ? 'AM' : 'PM'; 
+						
 					if (amPm === 1) {
 						hours -= 12;
 
