@@ -4,7 +4,7 @@
 	<security-constraint>
 		<web-resource-collection>
 			<web-resource-name>icon.png</web-resource-name>
-			<url-pattern>/icon.png</url-pattern>
+			<url-pattern>/public/icon.png</url-pattern>
 		</web-resource-collection>
 		<web-resource-collection>
 			<web-resource-name>all XML</web-resource-name>
