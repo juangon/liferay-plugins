@@ -13,6 +13,7 @@
 		<portlet-name>2</portlet-name>
 		<poller-processor-class>com.liferay.notifications.dockbarnotifications.poller.DockbarNotificationsPollerProcessor</poller-processor-class>
 		<use-default-template>false</use-default-template>
+		<layout-cacheable>true</layout-cacheable>
 		<header-portlet-css>/notifications/css/main.css</header-portlet-css>
 		<footer-portlet-javascript>/notifications/js/main.js</footer-portlet-javascript>
 		<css-class-wrapper>notifications-portlet</css-class-wrapper>
